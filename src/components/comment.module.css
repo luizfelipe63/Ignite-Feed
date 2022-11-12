@@ -1,0 +1,91 @@
+.comment{
+  display: flex;
+  align-items: flex-start;
+}
+
+.comment + .comment{
+  margin-top: 1.5rem;
+}
+
+.commentBox{
+  flex: 1;
+}
+
+.commentContent{
+  background: #29292E;
+  padding: 1rem 1rem 1.5rem 1rem;
+  border-radius: 8px;
+}
+
+.commentContent header{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.buttonTrash{
+  background-color: transparent;
+  border: 0;
+  color: var(--greey-400);
+  cursor: pointer;
+
+
+  line-height: 0;
+}
+
+.buttonTrash:hover{
+  color: var(--red-danger);
+}
+
+.author{
+  display: flex;
+  flex-direction: column;
+}
+
+.author > strong{
+  line-height: 1.5;
+  color: var(--greey-100);
+}
+
+.author > time{
+  line-height: 1.5;
+  font-size: .75rem;
+  color: var(--greey-400);
+}
+
+.commentContent > p{
+  margin-top: 1rem;
+  line-height: 1.5;
+}
+
+.avatar{
+  height: 3rem ;
+  width: 3rem ;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
+
+
+.buttonThumbsUp{
+  margin-top: 1rem;
+  background-color: var(--greey-800);
+  border: 0;
+  color: var(--greey-400);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+}
+
+.buttonThumbsUp svg{
+  margin-right: .75rem;
+}
+
+.buttonThumbsUp span::before{
+  content: '\2022';
+  padding: 0 .25rem;
+}
+
+.buttonThumbsUp:hover{
+  color: var(--green-500);
+}

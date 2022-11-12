@@ -1,0 +1,14 @@
+.yesBorderAvatar{
+  height: calc(3rem + 12px) ;
+  width: calc(3rem + 12px) ;
+  border-radius: 8px;
+  border: 4px solid var(--greey-900);
+  outline: 2px solid var(--green-500)
+}
+
+.noBorderAvatar{
+  height: 3rem;
+  width: 3rem;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
