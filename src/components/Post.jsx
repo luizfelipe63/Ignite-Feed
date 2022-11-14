@@ -1,34 +1,77 @@
+import {  format, formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR/'
+import { useState } from 'react'
+
+
 import { Avatar } from './Avatar'
 import { Comment } from './Comment'
 import styles from './Post.module.css'
 
-export function Post(props) {
+
+export function Post({author, publisheAt, content}) {
+
+  //Estados
+  const [comments, setComments] = useState([])
+  const [newCommentText, setNewCommentText] = useState('')
+
+
+  //Formatação de data e hora
+  const publisheDateTitle = format(publisheAt,"d 'de' MMM 'às' HH:mm:ss 'h' ",{
+    locale: ptBR
+  });
+
+  const publisheDateRelativeToNow = formatDistanceToNow(publisheAt,{
+    locale: ptBR ,
+    addSuffix:true   
+  } )
+
+
+  //Functions
+  function handleCreatNewComment(){
+    event.preventDefault()
+    setComments([...comments, newCommentText])
+    setNewCommentText('')
+  }
+
+  function handleCommentChange(){
+    setNewCommentText(event.target.value)
+  }
+
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar src="https://github.com/maykbrito.png"/>
+          <Avatar src={author.avatarUrl}/>
           <div className={styles.authorInfos}>
-            <strong>Luiz Felipe</strong>
-            <span>Frontend developer</span>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
           </div>
         </div>
-        <time title='11-11-2022 ás 10:49'className={styles.time} >
-            Publicado há 1 hora
+        <time title={publisheDateTitle} dateTime={publisheAt.toISOString()} className={styles.time} >
+          {publisheDateRelativeToNow}
         </time>
       </header>
 
       <div className={styles.content}>
-        <p>Fala galeraa 👋</p>
-        <p> Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀</p>
-        <p> 👉 <a href="">jane.design/doctorcare</a></p>
-        <p><a href=""> #novoprojeto #nlw #rocketseat</a></p>
+        {content.map(line => {
+          if (line.type == 'paragraph'){
+            return <p>{line.content}</p>
+          }else if(line.type == 'link'){
+            return <p><a href="#">{line.content}</a></p>
+          }
+        })}
       </div>
 
-      <form className={styles.comeentForm}>
+      <form onSubmit={handleCreatNewComment}  className={styles.comeentForm}>
 
           <strong>Deixe seu feedebeck</strong>
-          <textarea placeholder='Deixe seu comentário'/>
+
+          <textarea
+            onChange={handleCommentChange}
+            name='comment'
+            value={newCommentText}
+            placeholder='Deixe seu comentário'
+          />
 
           <footer>
             <button type="submit">Publicar</button>
@@ -36,9 +79,9 @@ export function Post(props) {
       </form>
 
       <div className={styles.commentBox}>
-          <Comment/>
-          <Comment/>
-          <Comment/>
+        {comments.map(comment => {
+          return <Comment content={comment}/>
+        })}
       </div>
     </article>
   )
