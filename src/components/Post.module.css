@@ -103,7 +103,7 @@
   max-height: none;
 }
 
-.comeentForm button{
+.comeentForm button[type=submit]{
   background: var(--green-500);
   color: var(--white);
   font-weight: bold;
@@ -116,8 +116,13 @@
 
 }
 
-.comeentForm button:hover{
+.comeentForm button[type=submit]:not(:disabled):hover{
   background: var(--green-300);
+}
+
+.comeentForm button[type=submit]:disabled{
+  opacity: .7;
+  cursor: not-allowed;
 }
 
 .commentBox{
