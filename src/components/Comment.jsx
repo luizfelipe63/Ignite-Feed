@@ -11,7 +11,9 @@ export function Comment({ content, onDeleteComment }) {
   }
 
   function handleLikeComment() {
-    setLikeComment(likeCommnent + 1)
+    setLikeComment(state => {
+      return state + 1
+    })
   }
 
   return (
