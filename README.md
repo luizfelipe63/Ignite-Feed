@@ -2,21 +2,19 @@
 
   <h3 align="center">Luiz Felipe - Ignite Feed</h3>
 
-  <p align="center">
-    Design system desenvolvido no evento ignite Lab da Rocketseat.
-    <br />
-    <br />
-  </p>
-</div>
 
 <br>
 
 <div align="center"><img src="./src/assets/screenchot.gif"></div>
 
+<br>
+
+> O Ignite Feed é um projeto desenvolvido com o objetivo de praticar alguns conceitos bem importantes do Reactjs. Como estado, imutabilidade, propriedades, componentes e iteração
+
 ## :computer: Funcionalidades
 
 - Publicar um comentário
-- Dar likes em comentário
+- Dar likes em um comentário
 - Remover comentário
 
 ## :rocket: Tecnologias
