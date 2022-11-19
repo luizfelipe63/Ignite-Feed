@@ -11,7 +11,7 @@
 
 <br>
 
-<div align="center"><img src="/assets/screenchot.gif"></div>
+<div align="center"><img src="./src/assets/screenchot.gif"></div>
 
 ## :computer: Funcionalidades
 
